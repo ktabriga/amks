@@ -34,7 +34,7 @@ var AlunoSchema = Schema({
   ativo: Boolean,
   peso: Number,
   altura: Number,
-  professor: Schema.Types.ObjectId,
+  professor: String,
   nomeProfessor: String,
   sexo: String
 });
