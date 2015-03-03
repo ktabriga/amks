@@ -1,0 +1,9 @@
+{
+    "porta": 3000,
+    "mongodb":{
+        "uri":"mongodb://localhost/amks"
+    },
+    "caminhoTemplates": "\\cliente\\templates",
+    "caminhoCliente": "\\cliente",
+    "SECRET": "SFlkjF#g21ss35RFDS3232RDSaf"
+}

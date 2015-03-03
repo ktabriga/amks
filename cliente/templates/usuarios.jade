@@ -1,0 +1,30 @@
+.breadcrumb
+  h2.pull-right
+    a.btn.btn-primary(ui-sref='principal.usuarioCadastro') Adicionar&nbsp;
+     span.glyphicon.glyphicon-plus
+  h2 Usuários
+  hr
+  .row
+    .col-md-4.form-group
+      label.control-label Usuario
+      input.form-control(maxlength= 30, ng-model='vm.pesquisa.usuario')
+    .col-md-2.col-md-offset-6
+      label &nbsp;
+      button.btn.btn-primary.form-control(ng-click='vm.buscar()') Pesquisar&nbsp;
+        i.glyphicon.glyphicon-search
+  hr
+  table.table.table-striped
+    thead
+      th Usuario
+      th Privilegio
+      th Ações
+    tbody
+      tr(ng-repeat='usuario in vm.usuarios')
+        td {{usuario.usuario}}
+        td {{usuario.privilegio}}
+        td
+          a.btn.btn-default(ng-click='vm.remover(usuario._id)')
+            span.glyphicon.glyphicon-trash
+          a.btn.btn-default(ui-sref='principal.usuarioCadastro({id: usuario._id})')
+            span.glyphicon.glyphicon-pencil
+

@@ -1,0 +1,16 @@
+.container
+  .row(style= "margin-top: 15px")
+    .col.col-md-4.col-md-offset-4.form-group.text-center
+      img(src="/images/amks.png", width= '200px')
+  form(ng-submit='vm.autenticar()')
+    .row
+      .col-md-4.col-md-offset-4.form-group
+        label.control-label Usuário
+        input.form-control(ng-model='vm.dados.usuario', name='usuario')
+    .row
+      .col-md-4.col-md-offset-4.form-group
+        label.control-label Senha
+        input.form-control(ng-model='vm.dados.senha', type='password', name='senha')
+    .row
+      .col-md-4.col-md-offset-4.form-group
+        button.btn.btn-primary.form-control(type='submit') Entrar

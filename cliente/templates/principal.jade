@@ -1,0 +1,27 @@
+.navbar.navbar-inverse.navbar-fixed-top
+  .container
+    .navbar-header
+      button.navbar-toggle.collapsed(data-toggle='collapse', data-target='#navbar', aria-expanded="false", aria-controls="navbar")
+        span.sr-only Toggle
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(ui-sref='principal') AMKS
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li
+          a(ui-sref='principal.alunos') Alunos
+        li(ng-show="vm.usuario.privilegio === 'ADMINISTRADOR' ")
+          a(ui-sref='principal.usuarios') Usuários
+      ui.nav.navbar-nav.navbar-right
+        li
+         a Bem Vindo, &nbsp;{{vm.usuario.usuario}}
+        li
+          a(href='javascript:void(0)', ng-click='vm.sair()') SAIR
+
+
+.container
+  .ui-view-container
+    div(ui-view="conteudo", class='wella', style='margin-top: 70px')
+
+

@@ -1,0 +1,33 @@
+doctype
+html
+    head
+      link(rel='stylesheet', href='/componentes/bootstrap/dist/css/bootstrap.min.css')
+      link(rel='stylesheet', href='/componentes/toastr/toastr.min.css')
+      link(rel='stylesheet', href='/css/main.css')
+      title AMKS
+    body(ng-app='amks')
+      div(ui-view='master')
+
+      script(src = '/componentes/jquery/dist/jquery.min.js')
+      script(src = '/componentes/toastr/toastr.min.js')
+      script(src = '/componentes/underscore/underscore-min.js')
+      script(src = '/componentes/bootstrap/dist/js/bootstrap.min.js')
+      script(src = '/componentes/angular/angular.min.js')
+      script(src = '/componentes/angular-ui-router/release/angular-ui-router.min.js')
+      script(src = '/componentes/restangular/dist/restangular.js')
+      script(src = '/componentes/underscore/underscore-min.js')
+      script(src = '/componentes/bootbox/bootbox.js')
+
+      script(src = '/app/aplicacao.js')
+      script(src = '/app/aplicacao.servico.js')
+      script(src = '/app/menu.controlador.js')
+      script(src = '/app/rotas.js')
+      script(src = '/app/autenticacao/autenticacao.servico.js')
+      script(src = '/app/autenticacao/login.controlador.js')
+
+      script(src = '/app/aluno/aluno.js')
+      script(src = '/app/aluno/alunoLista.controlador.js')
+      script(src = '/app/aluno/alunoCriacao.controlador.js')
+
+      script(src = '/app/usuario/usuarioLista.controlador.js')
+      script(src = '/app/usuario/usuarioCadastro.controlador.js')

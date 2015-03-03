@@ -1,0 +1,30 @@
+.breadcrumb
+  h2.pull-right()
+    a.btn.btn-default(style= 'margin-right: 10px', ng-click='vm.cancelar()') Cancelar&nbsp;
+      i.glyphicon.glyphicon-remove
+    a.btn.btn-success(ng-click='vm.salvarUsuarioForm()') Salvar&nbsp;
+      i.glyphicon.glyphicon-ok
+  h2 Usuários
+  hr
+  .row
+    .col-md-6.form-group
+      label.control-label Usuario *
+      input.form-control(ng-model='vm.usuario.usuario', maxlength='100')
+    .col-md-3.form-group
+      label.control-label Senha *
+      input.form-control(type='password', ng-model='vm.usuario.senha')
+    .col-md-3.form-group
+      label.control-label Repetir Senha *
+      input.form-control(type='password', ng-model='vm.usuario.senha2')
+  .row
+    .col-md-4.form-group
+      label.control-label Privilegio *
+      select.form-control(type='date' ,ng-model='vm.usuario.privilegio')
+        option(value='PROFESSOR') Professor
+        option(value='ADMINISTRADOR') Administrador
+    .col-md-6.form-group
+      label.control-label Professor *
+      select(ng-model='vm.usuario.professor').form-control
+        option(value='') Selecione
+        option(ng-repeat='aluno in vm.alunos', value='{{aluno._id}}') {{aluno.nome}}
+  hr

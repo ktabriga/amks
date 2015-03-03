@@ -1,0 +1,90 @@
+.breadcrumb
+  h2.pull-right()
+    a.btn.btn-default(style= 'margin-right: 10px', ng-click='vm.cancelar()') Cancelar&nbsp;
+      i.glyphicon.glyphicon-remove
+    a.btn.btn-success(ng-click='vm.salvar()') Salvar&nbsp;
+      i.glyphicon.glyphicon-ok
+  h2 Alunos
+  hr
+  .row
+    .col-md-6.form-group
+      label.control-label Nome *
+      input.form-control(ng-model='vm.aluno.nome', maxlength='100')
+    .col-md-2.form-group
+      label.control-label Data Nascimento *
+      input.form-control(type='date' ,ng-model='vm.aluno.nascimento')
+    .col-md-2.form-group
+      label.control-label Telefone *
+      input.form-control(ng-model='vm.aluno.telefone')
+    .col-md-2.form-group
+      label.control-label Celular
+      input.form-control(ng-model='vm.aluno.celular')
+  .row
+    .col-md-4.form-group
+      label.control-label Email
+      input.form-control(ng-model='vm.aluno.email')
+    .col-md-4.form-group
+      label.control-label RG *
+      input.form-control(ng-model='vm.aluno.rg')
+    .col-md-4.form-group
+      label.control-label CPF
+      input.form-control(ng-model='vm.aluno.cpf')
+  .row
+    .col-md-6.form-group
+      label.control-label Endereço
+      input.form-control(ng-model='vm.aluno.endereco')
+    .col-md-2.form-group
+      label.control-label Bairro
+      input.form-control(ng-model='vm.aluno.bairro')
+    .col-md-2.form-group
+      label.control-label Cidade
+      select.form-control(ng-model='vm.aluno.cidade')
+        option(value='') Selecione
+        option(ng-repeat='cidade in vm.cidades', value='{{cidade}}') {{cidade}}
+    .col-md-2.form-group
+      label.control-label CEP
+      input.form-control(ng-model='vm.aluno.cep')
+  .row
+    .col-md-3.form-group
+      label.control-label Graduação
+      select.form-control(ng-model='vm.aluno.graduacao')
+        option(value='') Selecione
+        option(value='branca') Branca
+        option(value='cinza') Cinza
+        option(value='amarela') Amarela
+        option(value='vermelha') Vermelha
+        option(value='laranja') Laranja
+        option(value='verde') Verde
+        option(value='roxo') Roxo
+        option(value='marron') Marron
+        option(value='1dan') Preta - 1º dan
+        option(value='2dan') Preta - 2º dan
+        option(value='3dan') Preta - 3º dan
+        option(value='4dan') Preta - 4º dan
+    .col-md-3.form-group
+      label.control-label Data Ultimo Exame
+      input.form-control(ng-model='vm.aluno.dataUltimoExame', type='date')
+    .col-md-3.form-group
+      label.control-label Professor
+      select.form-control(ng-model='vm.aluno.professor', ng-disabled='!vm.possuiPrivilegio')
+        option(value='') Selecione
+        option(ng-repeat='professor in vm.professores', value='{{professor._id}}') {{professor.nome}}
+    .col-md-3.form-group
+      label.control-label Sexo
+      br
+      .radio-inline
+        label(for='masculino')
+          input#masculino(type='radio', value='masculino', name='sexo', ng-model='vm.aluno.sexo')
+          | Masculino
+      .radio-inline
+        label(for='feminino')
+          input#feminino(type='radio', value='feminino', name='sexo', ng-model='vm.aluno.sexo')
+          | Feminino
+  .row
+    .col-md-4
+      label.control-label Altura
+      input.form-control(ng-model='vm.aluno.altura')
+    .col-md-4
+      label.control-label Peso
+      input.form-control(ng-model='vm.aluno.peso')
+  hr
