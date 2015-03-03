@@ -22,11 +22,12 @@ module.exports = function aplicacao(configuracao, api) {
   var env = process.env.NODE_ENV || 'development';
 
   app.use(api(configuracao));
+  app.use(erroMiddleware());
 
-  if (env === 'development') {
-    app.use(erroMiddleware());
-    //app.use(errorhandler());
-  }
+//  if (env === 'development') {
+//
+//    //app.use(errorhandler());
+//  }
 
   if (env === 'production') {
     // TODO
