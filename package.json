@@ -1,5 +1,5 @@
 {
-  "name": "NodeSeedProject",
+  "name": "AMKS",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -37,5 +37,8 @@
     "q": "^1.1.2",
     "rx": "^2.3.25",
     "underscore": "^1.7.0"
-  }
+  },
+  "private": true,
+  "main": "servidor.js"
+
 }
