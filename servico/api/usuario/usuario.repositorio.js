@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Q = require("Q");
+var Q = require("q");
 var tratamento = require('./../../biblioteca/tratamento');
 var Schema = mongoose.Schema;
 
