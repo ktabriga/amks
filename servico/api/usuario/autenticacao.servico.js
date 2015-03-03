@@ -1,6 +1,6 @@
 var jwt = require('jsonwebtoken');
 var usuarioRepositorio = require('./usuario.repositorio');
-var Q = require('Q');
+var Q = require('q');
 
 module.exports = servico;
 
