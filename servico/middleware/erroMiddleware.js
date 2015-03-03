@@ -31,6 +31,7 @@ module.exports = function () {
     console.log(erro.message);
     console.log(erro);
 
+    console.log('emitindo erro 400.MIDD');
     res.status(erro.status || 400)
       .json({
         mensagem: tratar(erro)
