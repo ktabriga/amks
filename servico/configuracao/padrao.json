@@ -3,7 +3,7 @@
     "mongodb":{
         "uri":"mongodb://amks:amks123@ds039950.mongolab.com:39950/amks"
     },
-    "caminhoTemplates": "\\cliente\\templates",
-    "caminhoCliente": "\\cliente",
+    "caminhoTemplates": "/cliente/templates",
+    "caminhoCliente": "/cliente",
     "SECRET": "SFlkjF#g21ss35RFDS3232RDSaf"
 }
