@@ -5,11 +5,14 @@ var usuario = require('./usuario/usuario.controlador');
 var aluno = require('./aluno/aluno.controlador');
 var cidade = require('./localizacao/localizacao.controlador');
 var expressJwt = require('express-jwt');
+var autenticacaoServico = require('./usuario/autenticacao.servico')
 
 /*
   configuração é um objeto com valos definidos no arquivo servico/configuracao/padrao
  */
 module.exports = function (configuracao) {
+  autenticacaoServico(configuracao).inserirUsuarioPadrao();
+
   var restrito = expressJwt({secret: configuracao.SECRET});
   router.use(templates());
   router.use('/api/autenticacao', autenticacao(configuracao));

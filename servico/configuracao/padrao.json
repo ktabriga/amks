@@ -1,7 +1,7 @@
 {
     "porta": 3000,
     "mongodb":{
-        "uri":"mongodb://localhost/amks"
+        "uri":"mongodb://amks:amks123@ds039950.mongolab.com:39950/amks"
     },
     "caminhoTemplates": "\\cliente\\templates",
     "caminhoCliente": "\\cliente",

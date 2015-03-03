@@ -5,10 +5,10 @@ var Q = require('Q');
 module.exports = servico;
 
 function servico(configuracao) {
-  inserirUsuarioPadrao();
 
   return {
-    autenticar: autenticar
+    autenticar: autenticar,
+    inserirUsuarioPadrao: inserirUsuarioPadrao
   };
 
   function autenticar(dados) {
@@ -48,9 +48,19 @@ function servico(configuracao) {
     var usuario = {
       usuario: "ADMIN",
       senha: "Rt123Xzy",
-      privilegio: "ADMINISTRADOR"
+      privilegio: "ADMINISTRADOR",
+      nome: "ADMINISTRADOR-SISTEMA",
+      professor: "0"
     };
 
-    usuarioRepositorio.salvar(usuario);
+    return usuarioRepositorio.buscarPorUsuario(usuario.usuario)
+      .then(function () {
+        console.log("Usuario Padrão Existente")
+      }).catch(function () {
+        console.log("Usuario Padrão Criado");
+        return usuarioRepositorio.salvar(usuario);
+      }).catch(function (erro) {
+        console.log(erro);
+      });
   }
 }
