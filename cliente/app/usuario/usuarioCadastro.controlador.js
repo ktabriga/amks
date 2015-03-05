@@ -10,7 +10,16 @@
     this.cancelar = cancelar;
     this.usuario = {};
 
-    buscarAlunos();
+    buscarAlunos()
+      .then(function () {
+
+        if ($stateParams.id) {
+          buscarUsuario($stateParams.id)
+            .then(function (usuario) {
+              self.usuario = usuario;
+            });
+        }
+      });
 
     function salvarUsuarioForm() {
       var professor = _.findWhere(self.alunos, {_id: self.usuario.professor});
@@ -26,12 +35,6 @@
       $state.go('principal.usuarios');
     }
 
-    if ($stateParams.id) {
-      buscarUsuario($stateParams.id)
-        .then(function (usuario) {
-          self.usuario = usuario;
-        });
-    }
 
     function buscarUsuario(id) {
       return restangular.one('usuarios', id)
@@ -45,7 +48,7 @@
     }
 
     function buscarAlunos() {
-      restangular.all('alunos')
+      return restangular.all('alunos')
         .getList()
         .then(function (alunos) {
           self.alunos = alunos;
