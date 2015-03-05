@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Q = require("q");
 var tratamento = require('./../../biblioteca/tratamento');
 var Schema = mongoose.Schema;
+var _ = require('underscore');
 
 var AlunoSchema = Schema({
   nome: {
@@ -58,7 +59,13 @@ function criar(aluno) {
 
 function atualizar(id, aluno) {
   var q = Q.defer();
-  Aluno.update({_id: id}, aluno, tratamento.tratarErro(q.resolve, q.reject));
+
+  buscarUm(id)
+    .then(function (alunoEncontrado) {
+      var alunoAtualizado = _.extend(alunoEncontrado, aluno);
+      return alunoAtualizado.save(tratamento.tratarErro(q.resolve, q.reject));
+    }).catch(q.reject);
+
   return q.promise;
 }
 

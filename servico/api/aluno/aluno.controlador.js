@@ -28,8 +28,9 @@ module.exports = function () {
     var dadosAluno = req.body;
     dadosAluno.professor = definirProfessor(req.user, dadosAluno);
 
-    alunoRepositorio.atualizar(id,montarAluno(dadosAluno))
+    alunoRepositorio.atualizar(id, montarAluno(dadosAluno))
       .then(function () {
+        console.log('sucessosss');
         res.end();
       })
       .catch(next);

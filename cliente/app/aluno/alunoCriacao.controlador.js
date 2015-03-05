@@ -10,8 +10,6 @@
     this.cancelar = cancelar;
     this.aluno = {};
 
-
-
     buscarProfessores()
       .then(buscarCidades)
       .then(function () {
@@ -66,6 +64,7 @@
 
     function salvar() {
       self.aluno.nomeProfessor = buscarNomeProfessor(self.aluno.professor);
+
       if (self.aluno._id) {
         atualizar();
       } else {

@@ -1,8 +1,16 @@
 .breadcrumb
-  h2.pull-right
-    a.btn.btn-primary(ui-sref='principal.alunosCadastro') Adicionar&nbsp;
-     span.glyphicon.glyphicon-plus
-  h2 Alunos
+  .row
+    .col-sm-3
+      h2 Alunos
+    .col-sm-2.col-sm-offset-5.form-group
+      label &nbsp;
+      a.btn.btn-default.form-control(ng-click='vm.limpar()') Limpar&nbsp;
+        span.glyphicon.glyphicon-trash
+    .col-sm-2
+      label &nbsp;
+      a.btn.btn-primary.form-control(ui-sref='principal.alunosCadastro') Adicionar&nbsp;
+       span.glyphicon.glyphicon-plus
+
   hr
   .row
     .col-md-4.form-group
@@ -40,7 +48,7 @@
           | Feminino
     .col-md-2.col-md-offset-2
       label &nbsp;
-      button.btn.btn-primary.form-control(ng-click='vm.buscar()') Pesquisar&nbsp;
+      button.btn.btn-primary.form-control(ng-click='vm.pequisar()') Pesquisar&nbsp;
         i.glyphicon.glyphicon-search
   hr
   table.table.table-striped

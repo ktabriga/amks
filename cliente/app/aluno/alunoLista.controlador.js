@@ -2,25 +2,31 @@
   ng.module('aluno')
     .controller('AlunoListaControlador', Controlador);
 
-  Controlador.$inject = ['Restangular'];
+  Controlador.$inject = ['Restangular', '$location', '$window'];
 
-  function Controlador(restangular) {
+  function Controlador(restangular, $location, $window) {
     var self = this;
-    this.buscar = buscar;
+    this.pequisar = pequisar;
     this.remover = remover;
-    this.pesquisa = {
-      sexo: ''
-    };
-
+    this.limpar = limpar;
+    deserializarPesquisa();
     buscar();
     buscarProfessores();
 
     function buscar() {
-        restangular.all('alunos')
-          .getList(self.pesquisa)
-          .then(function (alunos) {
-            self.alunos = alunos
-          });
+      self.pesquisa = $location.search();
+      serializarPesquisa();
+      restangular.all('alunos')
+        .getList($location.search())
+        .then(function (alunos) {
+          $location.search(self.pesquisa)
+          self.alunos = alunos
+        });
+    }
+
+    function pequisar() {
+      $location.search(self.pesquisa);
+      buscar();
     }
 
     function buscarProfessores() {
@@ -52,6 +58,25 @@
         }
       });
     }
+
+    function limpar() {
+      var novaPequisa = {sexo: ''};
+      this.pesquisa = novaPequisa;
+      $location.search(novaPequisa);
+    }
+
+    function serializarPesquisa() {
+      $window.localStorage.pesquisa = JSON.stringify(self.pesquisa);
+    }
+
+    function deserializarPesquisa() {
+      var pesquisaSerializada = $window.localStorage.pesquisa;
+      var pesquisa = JSON.parse(pesquisaSerializada || "{\"sexo\": \"\"}");
+      $location.search(pesquisa);
+      this.pesquisa = pesquisa;
+    }
+
   }
+
 
 })(angular);
