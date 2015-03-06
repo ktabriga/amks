@@ -2,7 +2,11 @@
   .row
     .col-sm-3
       h2 Alunos
-    .col-sm-2.col-sm-offset-5.form-group
+    .col-sm-2.col-sm-offset-3.form-group
+      label &nbsp;
+      a.btn.btn-default.form-control(ng-click='vm.imprimir()') Relatório&nbsp;
+        span.glyphicon.glyphicon-print
+    .col-sm-2.form-group
       label &nbsp;
       a.btn.btn-default.form-control(ng-click='vm.limpar()') Limpar&nbsp;
         span.glyphicon.glyphicon-trash
@@ -53,12 +57,16 @@
   hr
   table.table.table-striped
     thead
+      th.col-md-1
+        input(type='checkbox', ng-model='vm.todos', ng-click='vm.marcarItens()')
       th.col-md-4 Nome
       th.col-md-2 Nascimento
-      th.col-md-4 Professor
+      th.col-md-3 Professor
       th.col-md-2 Ações
     tbody
       tr(ng-repeat="aluno in vm.alunos | orderBy: 'nome' ")
+        td
+          input(type='checkbox', ng-model='aluno.marcado')
         td {{aluno.nome}}
         td {{aluno.nascimento | date: 'dd/MM/yyyy'}}
         td {{aluno.nomeProfessor}}
