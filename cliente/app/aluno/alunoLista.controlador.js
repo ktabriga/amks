@@ -2,9 +2,9 @@
   ng.module('aluno')
     .controller('AlunoListaControlador', Controlador);
 
-  Controlador.$inject = ['Restangular', '$location', '$window'];
+  Controlador.$inject = ['Restangular', '$location', '$window', '$filter'];
 
-  function Controlador(restangular, $location, $window) {
+  function Controlador(restangular, $location, $window, $filter) {
     var self = this;
     this.pequisar = pequisar;
     this.remover = remover;
@@ -63,8 +63,8 @@
       doc.text(10, linha += 10, nome);
       doc.setFontSize(12);
       alunos.forEach(function (aluno) {
-        var documento = aluno.cpf ? ',cpf: '+ aluno.cpf : ',rg: '+ aluno.rg;
-        doc.text(10, linha += 10,aluno.nome + documento);
+        var documento = aluno.cpf ? ',cpf: '+ aluno.cpf : ', rg: '+ aluno.rg;
+        doc.text(10, linha += 10,aluno.nome + documento + ', nascimento: '+ $filter('date')(aluno.nascimento, 'dd/MM/yyyy'));
 
         if (linha % 280 == 0) {
           doc.addPage();
