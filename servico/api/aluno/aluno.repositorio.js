@@ -25,6 +25,7 @@ var AlunoSchema = Schema({
     type: String,
     required: 'Rg é obrigatório'
   },
+  local: String,
   cpf: String,
   endereco: String,
   bairro: String,

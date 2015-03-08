@@ -51,6 +51,7 @@
         option(value='') Selecione
         option(value='branca') Branca
         option(value='cinza') Cinza
+        option(value='azul') Azul
         option(value='amarela') Amarela
         option(value='vermelha') Vermelha
         option(value='laranja') Laranja
@@ -81,6 +82,9 @@
           input#feminino(type='radio', value='feminino', name='sexo', ng-model='vm.aluno.sexo')
           | Feminino
   .row
+    .col-md-4
+      label.control-label Local de Treino
+      input.form-control(ng-model='vm.aluno.local')
     .col-md-4
       label.control-label Altura
       input.form-control(ng-model='vm.aluno.altura')
