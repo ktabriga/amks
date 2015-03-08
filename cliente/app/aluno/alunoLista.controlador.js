@@ -2,21 +2,24 @@
   ng.module('aluno')
     .controller('AlunoListaControlador', Controlador);
 
-  Controlador.$inject = ['Restangular', '$location', '$window', '$filter'];
+  Controlador.$inject = ['Restangular', '$scope', '$location', '$window', '$filter'];
 
-  function Controlador(restangular, $location, $window, $filter) {
+  function Controlador(restangular, $scope, $location, $window, $filter) {
     var self = this;
+    var professor;
     this.pequisar = pequisar;
     this.remover = remover;
     this.limpar = limpar;
     this.imprimir = imprimir;
     this.marcarItens = marcarItens;
+
     deserializarPesquisa();
-    buscar();
+    buscarAlunos();
     buscarProfessores();
 
-    function buscar() {
+    function buscarAlunos() {
       self.pesquisa = $location.search();
+      professor = self.pesquisa.professor;
       serializarPesquisa();
       restangular.all('alunos')
         .getList($location.search())
@@ -38,7 +41,7 @@
       var nome = prompt("Escolha o nome para o relatório:");
 
       if(!nome) {
-        toastr.warning('Nome do relatório é obrigatporio');
+        toastr.warning('Nome do relatório é obrigatório');
         return;
       }
 
@@ -77,7 +80,7 @@
 
     function pequisar() {
       $location.search(self.pesquisa);
-      buscar();
+      buscarAlunos();
     }
 
     function buscarProfessores() {
@@ -99,7 +102,7 @@
             callback: function () {
               restangular.one('alunos', id)
                 .remove()
-                .then(buscar);
+                .then(buscarAlunos);
             }
           },
           danger: {

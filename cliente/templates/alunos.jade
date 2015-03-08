@@ -9,7 +9,7 @@
     .col-sm-2.form-group
       label &nbsp;
       a.btn.btn-default.form-control(ng-click='vm.limpar()') Limpar&nbsp;
-        span.glyphicon.glyphicon-trash
+        span.glyphicon.glyphicon-erase
     .col-sm-2
       label &nbsp;
       a.btn.btn-primary.form-control(ui-sref='principal.alunosCadastro') Adicionar&nbsp;
@@ -32,9 +32,8 @@
   .row
     .col-md-4.form-group
       label.control-label Professor
-      select.form-control(ng-model='vm.pesquisa.professor')
+      select.form-control(ng-model='vm.pesquisa.professor', ng-options='professor._id as professor.nome for professor in vm.professores')
         option(value='') Selecione
-        option(value='{{professor._id}}', ng-repeat='professor in vm.professores') {{professor.nome}}
     .col-md-4.form-group
       label.control-label Sexo
       br
