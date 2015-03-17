@@ -58,14 +58,16 @@
     thead
       th.col-md-1
         input(type='checkbox', ng-model='vm.todos', ng-click='vm.marcarItens()')
+      th.col-md-1 Número
       th.col-md-4 Nome
       th.col-md-2 Nascimento
-      th.col-md-3 Professor
+      th.col-md-2 Professor
       th.col-md-2 Ações
     tbody
       tr(ng-repeat="aluno in vm.alunos | orderBy: 'nome' ")
         td
           input(type='checkbox', ng-model='aluno.marcado')
+        td {{$index + 1}}
         td {{aluno.nome}}
         td {{aluno.nascimento | date: 'dd/MM/yyyy'}}
         td {{aluno.nomeProfessor}}
